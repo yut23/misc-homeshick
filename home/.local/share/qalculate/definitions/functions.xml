@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<QALCULATE version="3.17.0">
+  <category>
+    <title>Logical</title>
+    <function>
+      <title>Get Bit Indices</title>
+      <names>r:getbits</names>
+      <description>Gets the indices of the set bits in the binary representation of a number, such that x = sum(2^i where i &#x2208; getbits(x)).</description>
+      <subfunction precalculate="true">for(\x, x, x &gt; 1, x &gt;&gt; 1, 0, y+1, y)</subfunction>
+      <expression>select(genvector(y, 0, \1, 1, y, 1), \x &amp; 1 &lt;&lt; x, x)</expression>
+      <argument type="integer" index="1">
+        <title>Number</title>
+        <min>0</min>
+      </argument>
+    </function>
+    <function>
+      <title>Set Bit Indices</title>
+      <names>setbits</names>
+      <expression>add(1 &lt;&lt; \x)</expression>
+      <argument type="vector" index="1">
+        <title>Indices</title>
+      </argument>
+    </function>
+  </category>
+</QALCULATE>

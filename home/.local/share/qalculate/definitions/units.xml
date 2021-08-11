@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<QALCULATE version="3.17.0">
+  <category>
+    <title>Time</title>
+    <deactivate>h</deactivate>
+    <unit type="alias">
+      <use_with_prefixes>false</use_with_prefixes>
+      <title>Hour</title>
+      <names>ar:hr,hour,p:hours</names>
+      <base>
+        <unit>min</unit>
+        <relation>60</relation>
+        <exponent>1</exponent>
+        <mix>1</mix>
+      </base>
+    </unit>
+  </category>
+  <category>
+    <title>Area</title>
+    <unit type="alias" active="false">
+      <use_with_prefixes>false</use_with_prefixes>
+      <title>Barn</title>
+      <names>barn,p:barns</names>
+      <base>
+        <unit>m</unit>
+        <relation>1E-28</relation>
+        <exponent>2</exponent>
+      </base>
+    </unit>
+  </category>
+  <category>
+    <title>Ratio</title>
+    <unit type="alias" active="false">
+      <use_with_prefixes>false</use_with_prefixes>
+      <title>Bel</title>
+      <names>bel,p:bels</names>
+      <base>
+        <unit>Np</unit>
+        <relation>0.5*ln(10)</relation>
+        <exponent>1</exponent>
+      </base>
+    </unit>
+  </category>
+</QALCULATE>
