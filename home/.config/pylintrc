@@ -70,7 +70,6 @@ disable=raw-checker-failed,
         use-symbolic-message-instead,
         invalid-name,
         missing-docstring,
-        bad-continuation,  # conflicts with black
         consider-using-f-string,
         unspecified-encoding,
         pointless-string-statement  # I use these for long block comments
