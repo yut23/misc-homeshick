@@ -1,0 +1,2 @@
+bind ^[[127;5u ed-delete-prev-word
+bind ^[[3;5~ em-delete-next-word
