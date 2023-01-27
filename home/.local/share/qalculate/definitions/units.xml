@@ -1,5 +1,9 @@
 <?xml version="1.0"?>
-<QALCULATE version="3.17.0">
+<QALCULATE version="4.5.1">
+  <category>
+    <title>Mass</title>
+    <deactivate>t</deactivate>
+  </category>
   <category>
     <title>Time</title>
     <deactivate>h</deactivate>
@@ -12,6 +16,16 @@
         <relation>60</relation>
         <exponent>1</exponent>
         <mix>1</mix>
+      </base>
+    </unit>
+    <unit type="alias">
+      <use_with_prefixes>false</use_with_prefixes>
+      <title>Minecraft Game Tick</title>
+      <names>a:t,tick</names>
+      <base>
+        <unit>s</unit>
+        <relation>1/20</relation>
+        <exponent>1</exponent>
       </base>
     </unit>
   </category>
