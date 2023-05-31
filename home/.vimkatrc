@@ -1,0 +1,47 @@
+set nocompatible
+
+" used in my config files to disable heavy plugins
+let g:vimcat = 1
+
+" disable plugins
+let g:loaded_airline = 1
+"let g:loaded_gitgutter = 1
+"let loaded_nerdtree = 1
+let loaded_matchparen = 1
+
+source $HOME/.config/nvim/init.vim
+
+" disable switching to the alternate screen buffer (retain scrollback)
+set t_ti=
+set t_te=
+" disable BCE
+set t_ut=
+" disable setting the scroll region
+set t_cs=
+" don't do focus tracking
+set t_fe=
+set t_fd=
+" don't change terminal size
+set t_WS=
+" use $COLUMNS and $LINES instead of asking the terminal
+let &cpoptions .= '|'
+" ???
+set t_CS=y
+
+set colorcolumn=
+set scrolloff=0
+set nolazyredraw
+set noruler
+set notitle
+set nocursorline
+" unfold everything
+set nofoldenable
+set nobackup
+set noundofile
+" hide statusline
+set laststatus=0
+" hide filename, line, and character count at startup
+set shortmess+=F
+set noshowcmd
+
+" vim:ft=vim
