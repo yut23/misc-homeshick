@@ -105,7 +105,8 @@ bad-names=foo,
           fdsa,
           toto,
           tutu,
-          tata
+          tata,
+          __postinit__,
 
 # Bad variable names regexes, separated by a comma. If names match any regex,
 # they will always be refused
