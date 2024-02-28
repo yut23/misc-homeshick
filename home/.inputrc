@@ -1,7 +1,31 @@
 $include /etc/inputrc
 
-set show-all-if-ambiguous on
+# settings from https://www.topbug.net/blog/2017/07/31/inputrc-for-humans/
 
+# display file completions with colors and suffix characters
+set colored-stats on
+set visible-stats on
+
+# ignore case when completing
+set completion-ignore-case on
+
+# don't abbreviate a common prefix among all completions if it's 3 characters or less
+set completion-prefix-display-length 3
+
+# append a slash to symlinks to directories
+set mark-symlinked-directories on
+
+# show all completions immediately if there is more than one match
+set show-all-if-ambiguous on
+# show all completions immediately if there is more than one match but no
+# partial completion can be made
+set show-all-if-unmodified on
+
+# search through history with C-p/C-n
+"\C-p": history-search-backward
+"\C-n": history-search-forward
+
+# my key bindings
 # ctrl-backspace
 "\e[127;5u": backward-kill-word
 # ctrl-delete
