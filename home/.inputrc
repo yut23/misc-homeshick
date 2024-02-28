@@ -1,14 +1,6 @@
 $include /etc/inputrc
 
-set editing-mode vi
 set show-all-if-ambiguous on
-
-# vi mode stuff
-set show-mode-in-prompt on
-set vi-ins-mode-string \1\e[5 q\2
-set vi-cmd-mode-string \1\e[1 q\2
-
-set keymap vi-insert
 
 # ctrl-backspace
 "\e[127;5u": backward-kill-word
@@ -19,4 +11,4 @@ set keymap vi-insert
 "\e[1;5C": forward-word
 
 # consume unknown CSI input sequences, instead of doing random stuff in cmd mode
-"\e[": skip-csi-sequence
+#"\e[": skip-csi-sequence
