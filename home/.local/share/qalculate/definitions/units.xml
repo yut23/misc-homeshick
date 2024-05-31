@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<QALCULATE version="4.5.1">
+<QALCULATE version="4.7.0">
   <category>
     <title>Mass</title>
     <deactivate>t</deactivate>
@@ -8,7 +8,6 @@
     <title>Time</title>
     <deactivate>h</deactivate>
     <unit type="alias">
-      <use_with_prefixes>false</use_with_prefixes>
       <title>Hour</title>
       <names>ar:hr,hour,p:hours</names>
       <base>
@@ -19,7 +18,6 @@
       </base>
     </unit>
     <unit type="alias">
-      <use_with_prefixes>false</use_with_prefixes>
       <title>Minecraft Game Tick</title>
       <names>a:t,tick</names>
       <base>
@@ -32,7 +30,6 @@
   <category>
     <title>Area</title>
     <unit type="alias" active="false">
-      <use_with_prefixes>false</use_with_prefixes>
       <title>Barn</title>
       <names>barn,p:barns</names>
       <base>
@@ -45,7 +42,6 @@
   <category>
     <title>Ratio</title>
     <unit type="alias" active="false">
-      <use_with_prefixes>false</use_with_prefixes>
       <title>Bel</title>
       <names>bel,p:bels</names>
       <base>
