@@ -18,6 +18,7 @@
       </base>
     </unit>
     <unit type="alias">
+      <system>Minecraft</system>
       <title>Minecraft Game Tick</title>
       <names>a:t,tick</names>
       <base>
@@ -48,6 +49,25 @@
         <unit>Np</unit>
         <relation>0.5*ln(10)</relation>
         <exponent>1</exponent>
+      </base>
+    </unit>
+  </category>
+  <category>
+    <title>Substance</title>
+    <unit type="base">
+      <system>Minecraft</system>
+      <title>Item</title>
+      <names>r:item,p:items</names>
+    </unit>
+    <unit type="alias">
+      <system>Minecraft</system>
+      <title>Stack</title>
+      <names>r:stack,p:stacks</names>
+      <base>
+        <unit>item</unit>
+        <relation>64</relation>
+        <exponent>1</exponent>
+        <mix>1</mix>
       </base>
     </unit>
   </category>
