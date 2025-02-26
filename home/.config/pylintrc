@@ -62,6 +62,9 @@ limit-inference-results=100
 
 # List of plugins (as comma separated values of python module names) to load,
 # usually to register additional checkers.
+; note to self: pylint-pytest isn't available on conda-forge
+; if I still want to use it and ignore errors if it's not available, disable
+; bad-plugin-value
 load-plugins=
 
 # Pickle collected data for later comparisons.
