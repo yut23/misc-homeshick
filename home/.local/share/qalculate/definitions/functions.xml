@@ -22,4 +22,17 @@
       </argument>
     </function>
   </category>
+  <category>
+    <title>Combinatorics</title>
+    <function>
+      <title>Multinomial Coefficient</title>
+      <names>r:multinomial</names>
+      <description>The coefficient of the x_1^{k_1} * x_2^{k_2} * ... term of (x_1 + x_2 + ...)^n.</description>
+      <example>multinomial(2, 3, 0) = 10</example>
+      <expression>total(\x)!/csum(1,0,1,\a*\b,\a,\b,factorial(\x))</expression>
+      <argument type="vector" index="1">
+        <title>Powers</title>
+      </argument>
+    </function>
+  </category>
 </QALCULATE>

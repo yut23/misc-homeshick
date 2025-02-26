@@ -4,8 +4,8 @@
     <title>Physical Constants</title>
     <category>
       <title>Universal Constants</title>
-      <deactivate>planck2pi</deactivate>
       <deactivate>planck</deactivate>
+      <deactivate>planck2pi</deactivate>
       <variable>
         <title>Reduced Planck Constant (Dirac constant)</title>
         <names>r:planck2pi,r:planck2pi,r:planck2pi</names>
