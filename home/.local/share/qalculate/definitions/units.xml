@@ -71,4 +71,16 @@
       </base>
     </unit>
   </category>
+  <category>
+    <title>Typography</title>
+    <unit type="alias">
+      <title>TeX Point</title>
+      <names>rs:tex_point,p:tex_points,a:tex_pt</names>
+      <base>
+        <unit>in</unit>
+        <relation>1/72.27</relation>
+        <exponent>1</exponent>
+      </base>
+    </unit>
+  </category>
 </QALCULATE>
