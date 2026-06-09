@@ -4,8 +4,8 @@
     <title>Logical</title>
     <function>
       <title>Get Bit Indices</title>
-      <names>r:getbits</names>
-      <description>Gets the indices of the set bits in the binary representation of a number, such that x = sum(2^i where i &#x2208; getbits(x)).</description>
+      <names>r:tobits</names>
+      <description>Gets the indices of the set bits in the binary representation of a number, such that x = sum(2^i where i &#x2208; tobits(x)).</description>
       <subfunction precalculate="true">floor(log2(max(1, \x)))</subfunction>
       <expression>select(genvector(y, 0, \1, 1, y, 1), \x &amp; 1 &lt;&lt; x, x)</expression>
       <argument type="integer" index="1">
@@ -15,7 +15,7 @@
     </function>
     <function>
       <title>Set Bit Indices</title>
-      <names>setbits</names>
+      <names>frombits</names>
       <expression>add(1 &lt;&lt; \x)</expression>
       <argument type="vector" index="1">
         <title>Indices</title>
