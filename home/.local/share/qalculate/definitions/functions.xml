@@ -35,4 +35,17 @@
       </argument>
     </function>
   </category>
+  <category>
+    <title>Matrices &amp; Vectors</title>
+    <function>
+      <title>Vector Difference</title>
+      <names>r:vecdiff</names>
+      <description>Calculate the difference between adjacent elements.</description>
+      <example>vecdiff([1,2,4])</example>
+      <expression>slice(\x,2,-1) - slice(\x,1,-2)</expression>
+      <argument type="vector" index="1">
+        <title>x</title>
+      </argument>
+    </function>
+  </category>
 </QALCULATE>
