@@ -4,21 +4,74 @@
   <https://github.com/ipython/ipython/issues/13446>
 * Set the pygments style to TerminalInteractiveShell.highlighting_style.
   <https://github.com/ipython/ipython/issues/12270>, maybe?
+
+For IPython 9.0+, make a new theme instead:
+* https://github.com/ipython/ipython/issues/14809
+* https://github.com/catppuccin/python/pull/134
 """
-from IPython.core.ultratb import (
-    Optional,
-    Terminal256Formatter,
-    TracebackType,
-    VerboseTB,
-    get_ipython,
-    get_style_by_name,
-    inspect,
-    stack_data,
-)
 
-if True:  # pylint: disable=using-constant-test  # to match indentation
+# pylint: disable=import-outside-toplevel
+
+import IPython
+
+
+def _get_highlighting_style():
+    from pygments.styles import get_style_by_name
+
+    ipinst = IPython.get_ipython()
+    if (
+        ipinst is not None
+        and hasattr(ipinst, "highlighting_style")
+        and ipinst.highlighting_style != "legacy"
+    ):
+        if isinstance(ipinst.highlighting_style, str):
+            style = get_style_by_name(ipinst.highlighting_style)
+        else:
+            style = ipinst.highlighting_style
+    else:
+        style = get_style_by_name("default")
+    return style
+
+
+def patch() -> None:
+    # pylint: disable=too-many-statements
+    from packaging.version import Version
+
+    if Version(IPython.__version__) >= Version("9.0.0"):
+        # make a custom theme
+        from copy import deepcopy
+
+        from IPython.utils.PyColorize import linux_theme, theme_table
+        from pygments.token import Token
+
+        my_theme = deepcopy(linux_theme)
+        my_theme.name = "yut23_theme"
+        my_theme.extra_style[Token.TbHighlight] = "bold underline"
+        theme_table[my_theme.name] = my_theme
+
+        IPython.get_ipython().run_line_magic("colors", my_theme.name)
+        return
+
+    from IPython.core.ultratb import VerboseTB
+
+    if hasattr(VerboseTB, "tb_highlight"):
+        VerboseTB.tb_highlight = "bold underline"
+        VerboseTB.tb_highlight_style = _get_highlighting_style()
+        return
+    if hasattr(VerboseTB, "_tb_highlight_style"):
+        VerboseTB._tb_highlight = "bold underline"
+        VerboseTB._tb_highlight_style = _get_highlighting_style()
+        return
+
+    from IPython.core.ultratb import (
+        Optional,
+        Terminal256Formatter,
+        TracebackType,
+        inspect,
+        stack_data,
+    )
+
     # pylint: disable=too-many-locals
-
     def patched_get_records(
         self, etb: TracebackType, number_of_lines_of_context: int, tb_offset: int
     ):
@@ -28,18 +81,8 @@ if True:  # pylint: disable=using-constant-test  # to match indentation
         before = context - after
         if self.has_colors:
             # --- start changes ---
-            ipinst = get_ipython()
-            if (
-                ipinst is not None
-                and hasattr(ipinst, "highlighting_style")
-                and ipinst.highlighting_style != "legacy"
-            ):
-                if isinstance(ipinst.highlighting_style, str):
-                    style = get_style_by_name(ipinst.highlighting_style)
-                else:
-                    style = ipinst.highlighting_style
-            else:
-                style = get_style_by_name("default")
+            # s/get_style_by_name("default")/_get_highlighting_style()/
+            style = _get_highlighting_style()
             # s/"bg:ansiyellow"/"bold underline"/
             style = stack_data.style_with_executing_node(style, "bold underline")
             # --- end changes ---
@@ -89,8 +132,6 @@ if True:  # pylint: disable=using-constant-test  # to match indentation
         return res
         # fmt: on
 
-
-def patch() -> None:
     VerboseTB.get_records = patched_get_records
 
 

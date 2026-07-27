@@ -1,5 +1,8 @@
 # Configuration file for ipython.
 
+import IPython
+from packaging.version import Version
+
 # ------------------------------------------------------------------------------
 # InteractiveShellApp(Configurable) configuration
 # ------------------------------------------------------------------------------
@@ -302,7 +305,8 @@ c.TerminalInteractiveShell.confirm_exit = False
 #  friendly, colorful, autumn, murphy, manni, monokai, perldoc, pastie, borland,
 #  trac, native, fruity, bw, vim, vs, tango, rrt, xcode, igor, paraiso-light,
 #  paraiso-dark, lovelace, algol, algol_nu, arduino, rainbow_dash, abap
-c.TerminalInteractiveShell.highlighting_style = "monokai"
+if Version(IPython.__version__) <= Version("9.0.0"):
+    c.TerminalInteractiveShell.highlighting_style = "monokai"
 
 ## Override highlighting format for specific tokens
 # c.TerminalInteractiveShell.highlighting_style_overrides = {}
