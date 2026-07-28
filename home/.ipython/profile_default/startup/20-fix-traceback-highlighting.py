@@ -37,7 +37,14 @@ def patch() -> None:
     # pylint: disable=too-many-statements
     from packaging.version import Version
 
-    if Version(IPython.__version__) >= Version("9.0.0"):
+    ipython_version = Version(IPython.__version__)
+
+    if ipython_version < Version("8.0.0"):
+        # fancy traceback coloring was introduced in 8.0.0, by
+        # https://github.com/ipython/ipython/pull/12150
+        return
+
+    if ipython_version >= Version("9.0.0"):
         # make a custom theme
         from copy import deepcopy
 
@@ -63,13 +70,10 @@ def patch() -> None:
         VerboseTB._tb_highlight_style = _get_highlighting_style()
         return
 
-    from IPython.core.ultratb import (
-        Optional,
-        Terminal256Formatter,
-        TracebackType,
-        inspect,
-        stack_data,
-    )
+    from types import TracebackType
+    from typing import Optional
+
+    from IPython.core.ultratb import Terminal256Formatter, inspect, stack_data
 
     # pylint: disable=too-many-locals
     def patched_get_records(

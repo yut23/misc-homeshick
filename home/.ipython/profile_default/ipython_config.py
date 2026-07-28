@@ -3,6 +3,8 @@
 import IPython
 from packaging.version import Version
 
+_ipython_version = Version(IPython.__version__)
+
 # ------------------------------------------------------------------------------
 # InteractiveShellApp(Configurable) configuration
 # ------------------------------------------------------------------------------
@@ -305,7 +307,7 @@ c.TerminalInteractiveShell.confirm_exit = False
 #  friendly, colorful, autumn, murphy, manni, monokai, perldoc, pastie, borland,
 #  trac, native, fruity, bw, vim, vs, tango, rrt, xcode, igor, paraiso-light,
 #  paraiso-dark, lovelace, algol, algol_nu, arduino, rainbow_dash, abap
-if Version(IPython.__version__) <= Version("9.0.0"):
+if _ipython_version < Version("9.0.0"):
     c.TerminalInteractiveShell.highlighting_style = "monokai"
 
 ## Override highlighting format for specific tokens
@@ -339,7 +341,8 @@ c.TerminalInteractiveShell.mouse_support = False
 #  in orange: printf "\x1b[38;2;255;100;0mTRUECOLOR\x1b[0m\n"
 c.TerminalInteractiveShell.true_color = True
 
-c.TerminalInteractiveShell.autosuggestions_provider = "AutoSuggestFromHistory"
+if _ipython_version >= Version("8.0.0"):
+    c.TerminalInteractiveShell.autosuggestions_provider = "AutoSuggestFromHistory"
 
 # ------------------------------------------------------------------------------
 # HistoryAccessor(HistoryAccessorBase) configuration
